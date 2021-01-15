@@ -1,8 +1,7 @@
 # SSAI
 AI/ML toolkits for social scientists
 
-Example 
-
+```
 batches = batch(X, Y, size = int)
 
 weight, bias = initialize(weight, bias)
@@ -35,4 +34,5 @@ for epoch in (epochs):
     epoch_cost_update.append(cost)
     
 visualize.cost() 
-visualize.linreg() 
+visualize.linreg()
+```
