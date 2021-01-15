@@ -54,3 +54,7 @@ class cost_function():
         self.dloss = 1/sample_size * np.ones((1,sample_size))
         self.dloss = dvoi * self.dloss
         return self.dloss
+
+class dummy:
+    def __init__(self):
+        pass
