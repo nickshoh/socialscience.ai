@@ -1,0 +1,4 @@
+setup.py 버전 바꾸고,
+python setup.py sdist bdist_Wheel
+twine check dist/*
+twine upload dist/*

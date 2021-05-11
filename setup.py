@@ -3,8 +3,8 @@ import os
 
 
 setuptools.setup(
-    name='social_science_ai'
-    , version='0.0.3'
+    name='socialscience.ai'
+    , version='0.0.5'
     , author='Nick Oh'
     , author_email="S.H.Oh1@lse.ac.uk"
     , description="AI/ML toolkits for social scientists"
