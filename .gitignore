@@ -1,0 +1,6 @@
+dist/**
+build/**
+**.ipynb
+**egg-info/**
+**.egg-info/**
+social_science_ai.egg-info/**
