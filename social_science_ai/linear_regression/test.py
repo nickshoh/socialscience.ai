@@ -11,8 +11,11 @@ class affine_function:
         self.y_hat = np.dot(self.w.T, self.x) + self.b
         return self.y_hat 
     
-    def backward(self, dvoi):  
-        self.dw = np.dot(dvoi, self.x.T) 
+    def backward(self, dvoi): 
+        #dw = np.dot(dvoi.T, self.x) 
+        self.dw = np.diagonal(self.x)
+        self.dw = np.diag(self.dw)
+        self.dw = np.dot(dvoi,self.dw) 
         
         self.db = np.ones((self.x.shape[1],1))
         self.db = np.dot(dvoi,self.db) 
@@ -35,7 +38,8 @@ class loss_function:
         self.dy_hat = np.dot(dvoi,self.dy_hat)
         return self.dy_hat
 
-class cost_function: 
+class cost_function(): 
+    #using super to inherit self.x 
     def __init__(self): 
         self.loss = None 
         self.cost = None 
@@ -46,6 +50,7 @@ class cost_function:
         return self.cost 
     
     def backward(self, sample_size, dvoi): 
+        #If we use super to inherit self.x, we can use dloss = 1/self.x.shape[1] * np.ones((1,self.x.shape[1])) instead
         self.dloss = 1/sample_size * np.ones((1,sample_size))
         self.dloss = dvoi * self.dloss
         return self.dloss
