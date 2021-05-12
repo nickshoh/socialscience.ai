@@ -18,18 +18,7 @@ SocialScienceAI (SSAI), as a platform, has been developed to achieve two main go
 --------------
 linreg.generate()
 --------------
-
-```
-import ssai.generate 
-
-SLR = generate.SimpleLinReg()
-
-X = 
-
-```
-Generate M random samples of a dependent variable (y) and N independent variables (x), that follows some linear regression defined. For multiple linear regression, assumes multivariate normality
-
-
+Generate M random samples of a dependent variable (y) and N independent variables (x), that follows some linear regression defined. For multiple linear regression, assumes ... 
 --------------
 regression : function, default=1/2x+1
 
@@ -43,6 +32,16 @@ noise : float, default=0.1
 
 noise_dist : string, default='Normal'
 
+--------------
+
+```
+import ssai.generate 
+
+SLR = generate.SimpleLinReg()
+
+X = 
+
+```
 --------------
 linear_regression.batch() 
 --------------
