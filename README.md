@@ -12,9 +12,7 @@ SocialScienceAI (SSAI), as a platform, has been developed to achieve two main go
 
 (*2021-01-15 : While our initial idea was to provide tutorials with the main focus on the applications of SSAI package, we realised that many students with a social science background lack mathematical foundations - namely Linear Algebra and Matrix Calculus - to understand such applications. For that reason, we decided to focus on producing introductory resources on essential math topics for the first half of 2021. Before any further updates, the package will only provide Supervised Learning for Linear Regression.)
 
-<<Supervised Learning: Simple Linear Regression>>
-
-<Function & Parameters>
+<Supervised Learning: Simple Linear Regression>
 --------------
 linreg.generate()
 --------------
