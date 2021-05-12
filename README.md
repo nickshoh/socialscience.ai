@@ -1,28 +1,33 @@
 # SSAI
-AI/ML toolkits for social scientists
 
-SocialScienceAI (SSAI) has been developed to achieve two main goals: (i) To be approachable for social scientists with no prior knowledge in machine learning, with compelte doumentation and tutorials (see socialscience.ai), and (ii) To be able to easily, rapidly, and flexibily apply different machine learning algorithms in the fields of social science. 
-    
-    (i) Single-Variable Linear Regression
-    (ii) Multi-Variable Linear Regression 
-    (iii) Polynomial Regression 
-    (iv) Classification 
-    (v) 
-    (vi)
-    (vii)
-    (viii)
-    (ix)
-    (x)
+SSAI is AI/ML toolkit for social scientists. 
 
+SocialScienceAI (SSAI), as a platform, has been developed to achieve two main goals: (i) To be approachable for social scientists with no prior knowledge in machine learning, by compelte doumentation and tutorials (see www.socialscience.ai/MOOC), and (ii) To be able to easily, rapidly, and flexibily apply different machine learning algorithms in the fields of social science (see www.pypi.org/project/socialscience.ai/). We will constantly update on our process, but currently the package performs the following operations.  
 
-<<Linear Regression>>
+    (i) Simple (univariate) Linear Regression
+    (ii) Multiple (univariate) Linear Regression 
+    (iii) Simple Multivariate Linear Regression 
+    (iv) Multiple Multivariate Linear Regression  
+    (v) Polynomial Regression (tbd) 
+
+(*2021-01-15 : While our initial idea was to provide tutorials with the main focus on the applications of SSAI package, we realised that many students with a social science background lack mathematical foundations - namely Linear Algebra and Matrix Calculus - to understand such applications. For that reason, we decided to focus on producing introductory resources on essential math topics for the first half of 2021. Before any further updates, the package will only provide Supervised Learning for Linear Regression.)
+
+<<Supervised Learning: Simple Linear Regression>>
 
 <Function & Parameters>
 --------------
-linreg.generate() 
-(For n_features = 1 at the moment)
+linreg.generate()
 --------------
-Generate M random samples of a dependent varibale (y) and N independent variables (x), that follows some linear regression defined. For multiple linear regression, assumes multivariate normality
+
+```
+import ssai.generate 
+
+SLR = generate.SimpleLinReg()
+
+X = 
+
+```
+Generate M random samples of a dependent variable (y) and N independent variables (x), that follows some linear regression defined. For multiple linear regression, assumes multivariate normality
 
 
 --------------
