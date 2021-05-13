@@ -67,36 +67,68 @@ noise = 0.5
 X = SLR.random_sampling(1, 50, n_features, m_samples)
 Y = SLR.random_treatment(X, n_features, m_samples, noise)
 ```
+--------------
 ### 2. Supervised Learning  
 --------------
 propagate.LinReg.affine(weight, bias, x) 
 --------------
 
-Performs forward and backward propagation. Forward propagation calculates affine function, given weight (w), bias (b) and input (x). Backward propagation calculates , given dvoi
+Performs forward and backward propagation of Affine Function (y_hat). Affine forward propagation calculates affine function, given weight (w), bias (b) and input (x). Given dJ/dy_hat from the previous loss back propagation, affine back propogation calculates dJ/dw and dJ/db, with dy_hat/dw and dy_hat/db. dJ/dw = (dJ/dL)(dL/dy_hat)(dy_hat/dw) & dJ/db = (dJ/dL)(dL/dy_hat)(dy_hat/db)  
 
 --------------
 
-Forward Propagation  
+Forward Propagation
+
 w : float 
+
 b : float
+
 x : Matrix (np.array) 
 
+
 Backward Propagation  
+
 dvoi : Vector (np.array)  
 
 --------------
 propagate.LinReg.loss(y, y_hat) 
 --------------
 
+Performs forward and backward propagation of Loss Function (L). Loss forward propagation calculates loss function, given y_hat (from the affine forward propagation) and y. Provided with dJ/dL from the previous cost back propagation, loss back propagation calculates dJ/dy_hat, with dL/dy_hat. dJ/dy_hat = (dJ/dL)(dL/dy_hat)  
+
+--------------
+
+Forward Propagation
+
+y : Vector (np.array)  
+
+y_hat : Vector (np.array)  
+
+
+Backward Propagation  
+
+dvoi : Vector (np.array)  
+
 --------------
 propagate.LinReg.cost(loss) 
 --------------
-forward 
 
-backward 
+Performs forward and backward propagation of Cost Function (J). Cost forward propagation calculates cost function, given loss (from the loss forward propagation). Cost back propagation calculates dJ/dL, given the sample size. 
+
+--------------
+
+Forward Propagation
+
+loss : Vector (np.array)
+
+
+Backward Propagation  
+
 sample_size = int 
-dvoi : np.array, default = 1  
 
+dvoi : int, default = 1  
+
+--------------
 ### 3. Application   
 
 ```
