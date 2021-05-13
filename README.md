@@ -14,7 +14,7 @@ SocialScienceAI (SSAI), as a platform, has been developed to achieve two main go
 
 ## Supervised Learning: Simple Linear Regression
 
-### 1. Generating Random Data 
+### 1. Generating (Simulating) Data 
 
 --------------
 #### generate.SimpleLinReg.random_sampling()
@@ -36,9 +36,7 @@ m_samples : int, default=50
 #### generate.SimpleLinReg.random_treatment()
 --------------
 
-Simulating univariate simple and multiple linear regression with the following assumptions: (i) k-variate Normality, (ii) No perfect multicolinearity, (ii) Homoskedasticity.    
-Given the input generated from random_sampling(),  
-Independent distribution of potential outcomes ensured by randomly selecting the potential outcome from y ~ N(y_hat, noise). Even under the assumption of homoskedasticity, the process prevents knowing about the potential outcome on another sample given the observed outcome of one sample. 
+Given the input generated from random_sampling(), simulates simple linear regression. Independent distribution of potential outcomes is ensured by randomly selecting the output from y ~ N(y_hat, noise), where y_hat = 1/2x + 1 by default. That is, we follow the assumption of Normality and Homoskedasticity, and the process prevents knowing about the potential outcome on another sample given the observed outcome of one sample. 
 
 --------------
 
@@ -58,14 +56,16 @@ import ssai.generate
 SLR = generate.SimpleLinReg()
 
 """Default"""
-# Producing 50 samples of 0<X<11, and Y that follows 1/2X+1  
 X = SLR.random_sampling()
 Y = SLR.random_treatment(X)
 
 """Adjust"""
-# Producing M samples of low<X<high, and 
-X = 
-Y = 
+n_features = 1
+m_samples = 100 
+noise = 0.5 
+
+X = SLR.random_sampling(1, 50, n_features, m_samples)
+Y = SLR.random_treatment(X, n_features, m_samples, noise)
 
 ```
 --------------
