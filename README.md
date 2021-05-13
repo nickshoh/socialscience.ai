@@ -16,6 +16,25 @@ SocialScienceAI (SSAI), as a platform, has been developed to achieve two main go
 
 ### 1. Generating (Simulating) Data 
 
+
+```
+import ssai.generate 
+
+SLR = generate.SimpleLinReg()
+
+"""Default"""
+X = SLR.random_sampling()
+Y = SLR.random_treatment(X)
+
+"""Adjust"""
+n_features = 1
+m_samples = 100 
+noise = 0.5 
+
+X = SLR.random_sampling(1, 50, n_features, m_samples)
+Y = SLR.random_treatment(X, n_features, m_samples, noise)
+```
+
 --------------
 #### generate.SimpleLinReg.random_sampling()
 --------------
@@ -50,23 +69,6 @@ noise_dist : string, default='Normal'
 
 --------------
 
-```
-import ssai.generate 
-
-SLR = generate.SimpleLinReg()
-
-"""Default"""
-X = SLR.random_sampling()
-Y = SLR.random_treatment(X)
-
-"""Adjust"""
-n_features = 1
-m_samples = 100 
-noise = 0.5 
-
-X = SLR.random_sampling(1, 50, n_features, m_samples)
-Y = SLR.random_treatment(X, n_features, m_samples, noise)
-```
 --------------
 ### 2. Supervised Learning  
 --------------
