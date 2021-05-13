@@ -18,21 +18,13 @@ SocialScienceAI (SSAI), as a platform, has been developed to achieve two main go
 
 
 ```
-import ssai.generate 
+import numpy as np 
+from ssai import generate 
 
 SLR = generate.SimpleLinReg()
 
-"""Default"""
 X = SLR.random_sampling()
 Y = SLR.random_treatment(X)
-
-"""Adjust"""
-n_features = 1
-m_samples = 100 
-noise = 0.5 
-
-X = SLR.random_sampling(1, 50, n_features, m_samples)
-Y = SLR.random_treatment(X, n_features, m_samples, noise)
 ```
 
 --------------
@@ -71,8 +63,41 @@ noise_dist : string, default='Normal'
 
 --------------
 ### 2. Supervised Learning  
+
+```
+from ssai import propagate 
+
+n_features = 1 
+m_samples = 25
+
+"""Hyperparameter"""
+weight = np.random.randn(n_features, 1)
+bias = np.random.randn(1) 
+lr = 0.001 
+
+"""Propagation"""
+affine = propagate.LinReg.affine()
+loss = propagate.LinReg.loss()
+cost = propagate.LinReg.cost()
+
+
+for _ in range (10000): 
+        """Forward Propagation"""
+        y_hat = affine.forward() 
+        loss = loss.forward() 
+        cost = cost.forward() 
+        
+        """Backward Propagation"""
+        dloss = cost.backward()
+        dy_hat = loss.backward()
+        dw, db = affine.backward() 
+        
+        """Parameter Update"""
+        weight -= lr*dw 
+        bias -= lr*db     
+```
 --------------
-propagate.LinReg.affine(weight, bias, x) 
+####propagate.LinReg.affine(weight, bias, x) 
 --------------
 
 Performs forward and backward propagation of Affine Function (y_hat). Affine forward propagation calculates affine function, given weight (w), bias (b) and input (x). Given dJ/dy_hat from the previous loss back propagation, affine back propogation calculates dJ/dw and dJ/db, with dy_hat/dw and dy_hat/db. dJ/dw = (dJ/dL)(dL/dy_hat)(dy_hat/dw) & dJ/db = (dJ/dL)(dL/dy_hat)(dy_hat/db)  
@@ -93,7 +118,7 @@ Backward Propagation
 dvoi : Vector (np.array)  
 
 --------------
-propagate.LinReg.loss(y, y_hat) 
+####propagate.LinReg.loss(y, y_hat) 
 --------------
 
 Performs forward and backward propagation of Loss Function (L). Loss forward propagation calculates loss function, given y_hat (from the affine forward propagation) and y. Provided with dJ/dL from the previous cost back propagation, loss back propagation calculates dJ/dy_hat, with dL/dy_hat. dJ/dy_hat = (dJ/dL)(dL/dy_hat)  
@@ -112,7 +137,7 @@ Backward Propagation
 dvoi : Vector (np.array)  
 
 --------------
-propagate.LinReg.cost(loss) 
+####propagate.LinReg.cost(loss) 
 --------------
 
 Performs forward and backward propagation of Cost Function (J). Cost forward propagation calculates cost function, given loss (from the loss forward propagation). Cost back propagation calculates dJ/dL, given the sample size. 
@@ -131,40 +156,3 @@ sample_size = int
 dvoi : int, default = 1  
 
 --------------
-### 3. Application   
-
-```
-batches = batch(X, Y, size = int)
-
-weight, bias = initialize(weight, bias)
-epochs = int 
-lr = float 
-
-weight_update = [] 
-bias_update = [] 
-batch_cost_update = [] 
-epoch_cost_update = [] 
-
-for epoch in (epochs): 
-    for batch in (batches):
-        X,Y = xbatch, ybatch
-        y_hat = affine.forward() 
-        loss = loss.forward() 
-        cost = cost.forward() 
-        
-        dloss = cost.backward()
-        dy_hat = loss.backward()
-        dw, db = affine.backward() 
-        
-        weight -= lr*dw 
-        bias -= lr*db 
-        
-        weight_update.append(weight)
-        bias_update.append(bias)
-        batch_cost_update.append(cost)
-        
-    epoch_cost_update.append(cost)
-    
-visualize.cost() 
-visualize.linreg()
-```
