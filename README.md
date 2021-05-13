@@ -28,7 +28,7 @@ Y = SLR.random_treatment(X)
 ```
 
 --------------
-#### generate.SimpleLinReg.random_sampling()
+#### generate.SimpleLinReg.random_sampling(low, high, n_features, m_samples)
 --------------
 
 Generates identically distributed M random samples (via np.random.uniform, drawing samples from a uniform distribution.)
@@ -44,7 +44,7 @@ m_samples : int, default=50
 --------------
 
 --------------
-#### generate.SimpleLinReg.random_treatment()
+#### generate.SimpleLinReg.random_treatment(x, n_features, m_samples, noise, noise_dist)
 --------------
 
 Given the input generated from random_sampling(), simulates simple linear regression. Independent distribution of potential outcomes is ensured by randomly selecting the output from y ~ N(y_hat, noise), where y_hat = 1/2x + 1 by default. That is, we follow the assumption of Normality and Homoskedasticity, and the process prevents knowing about the potential outcome on another sample given the observed outcome of one sample. 
@@ -83,21 +83,23 @@ cost = propagate.LinReg.cost()
 
 for _ in range (10000): 
         """Forward Propagation"""
-        y_hat = affine.forward() 
-        loss = loss.forward() 
-        cost = cost.forward() 
+        y_hat = affine.forward(weight, bias, X) 
+        L = loss.forward(Y, y_hat) 
+        J = cost.forward(L) 
         
         """Backward Propagation"""
-        dloss = cost.backward()
-        dy_hat = loss.backward()
-        dw, db = affine.backward() 
+        dL = cost.backward(sample_size = m_samples)
+        dy_hat = loss.backward(dL)
+        dw, db = affine.backward(dy_hat) 
         
         """Parameter Update"""
         weight -= lr*dw 
         bias -= lr*db     
+
+print(weight, bias) 
 ```
 --------------
-#### propagate.LinReg.affine(weight, bias, x) 
+#### propagate.LinReg.affine(w, b, x) 
 --------------
 
 Performs forward and backward propagation of Affine Function (y_hat). Affine forward propagation calculates affine function, given weight (w), bias (b) and input (x). Given dJ/dy_hat from the previous loss back propagation, affine back propogation calculates dJ/dw and dJ/db, with dy_hat/dw and dy_hat/db. dJ/dw = (dJ/dL)(dL/dy_hat)(dy_hat/dw) & dJ/db = (dJ/dL)(dL/dy_hat)(dy_hat/db)  
