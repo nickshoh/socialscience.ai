@@ -66,46 +66,38 @@ noise = 0.5
 
 X = SLR.random_sampling(1, 50, n_features, m_samples)
 Y = SLR.random_treatment(X, n_features, m_samples, noise)
-
 ```
+### 2. Supervised Learning  
 --------------
-linear_regression.batch() 
---------------
-X : Matrix (n_features x m_samples)
-
-Y : Row Vector (1 x m_samples)
-
-batch_size : int, default=int(m_records/10)
-
---------------
-linear_regression.affine(weight, bias, x) 
+propagate.LinReg.affine(weight, bias, x) 
 --------------
 
---------------
-linear_regression.loss(y, y_hat) 
---------------
+Performs forward and backward propagation. Forward propagation calculates affine function, given weight (w), bias (b) and input (x). Backward propagation calculates , given dvoi
 
 --------------
-linear_regression.cost(loss) 
---------------
+
+Forward Propagation  
+w : float 
+b : float
+x : Matrix (np.array) 
+
+Backward Propagation  
+dvoi : Vector (np.array)  
 
 --------------
-visualize.linreg()
+propagate.LinReg.loss(y, y_hat) 
 --------------
 
 --------------
-visualize.loss(epoch = int, sample = int, feature = int) 
+propagate.LinReg.cost(loss) 
 --------------
+forward 
 
---------------
-visualize.cost() 
---------------
+backward 
+sample_size = int 
+dvoi : np.array, default = 1  
 
---------------
-visualize.neuralnet()
---------------
-
-<Code Example>
+### 3. Application   
 
 ```
 batches = batch(X, Y, size = int)
