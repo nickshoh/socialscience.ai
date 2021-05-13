@@ -17,7 +17,7 @@ SocialScienceAI (SSAI), as a platform, has been developed to achieve two main go
 ### 1. Generating Random Data 
 
 --------------
-generate.SimpleLinReg.random_sampling()
+#### generate.SimpleLinReg.random_sampling()
 --------------
 
 Generates identically distributed M random samples (via np.random.uniform, drawing samples from a uniform distribution.)
@@ -33,7 +33,7 @@ m_samples : int, default=50
 --------------
 
 --------------
-generate.SimpleLinReg.random_treatment()
+#### generate.SimpleLinReg.random_treatment()
 --------------
 
 Simulating univariate simple and multiple linear regression with the following assumptions: (i) k-variate Normality, (ii) No perfect multicolinearity, (ii) Homoskedasticity.    
