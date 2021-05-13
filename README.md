@@ -12,24 +12,39 @@ SocialScienceAI (SSAI), as a platform, has been developed to achieve two main go
 
 (*2021-01-15 : While our initial idea was to provide tutorials with the main focus on the applications of SSAI package, we realised that many students with a social science background lack mathematical foundations - namely Linear Algebra and Matrix Calculus - to understand such applications. For that reason, we decided to focus on producing introductory resources on essential math topics for the first half of 2021. Before any further updates, the package will only provide Supervised Learning for Linear Regression.)
 
-<<Supervised Learning: Simple Linear Regression>>
-    
-<Supervised Learning: Simple Linear Regression>
-    
---------------
-linreg.generate()
---------------
+## Supervised Learning: Simple Linear Regression
 
-Generate M random samples of a dependent variable (y) and N independent variables (x), that follows some linear regression defined. For multiple linear regression, assumes ... 
+### 1. Generating Random Data 
 
 --------------
-regression : function, default=1/2x+1
+generate.SimpleLinReg.random_sampling()
+--------------
+
+Generates identically distributed M random samples (via np.random.uniform, drawing samples from a uniform distribution.)
+
+--------------
 
 low,high : int, default=1,10
 
 n_features : int, default=1
 
-m_samples : int, default=100 
+m_samples : int, default=50
+
+--------------
+
+--------------
+generate.SimpleLinReg.random_treatment()
+--------------
+
+Simulating univariate simple and multiple linear regression with the following assumptions: (i) k-variate Normality, (ii) No perfect multicolinearity, (ii) Homoskedasticity.    
+Given the input generated from random_sampling(),  
+Independent distribution of potential outcomes ensured by randomly selecting the potential outcome from y ~ N(y_hat, noise). Even under the assumption of homoskedasticity, the process prevents knowing about the potential outcome on another sample given the observed outcome of one sample. 
+
+--------------
+
+n_features : int, default=1
+
+m_samples : int, default=50
 
 noise : float, default=0.1
 
@@ -42,7 +57,15 @@ import ssai.generate
 
 SLR = generate.SimpleLinReg()
 
+"""Default"""
+# Producing 50 samples of 0<X<11, and Y that follows 1/2X+1  
+X = SLR.random_sampling()
+Y = SLR.random_treatment(X)
+
+"""Adjust"""
+# Producing M samples of low<X<high, and 
 X = 
+Y = 
 
 ```
 --------------
