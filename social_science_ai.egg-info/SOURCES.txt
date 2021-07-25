@@ -1,8 +1,0 @@
-setup.py
-socialScienceAI/LinearRegression.py
-socialScienceAI/__init__.py
-social_science_ai.egg-info/PKG-INFO
-social_science_ai.egg-info/SOURCES.txt
-social_science_ai.egg-info/dependency_links.txt
-social_science_ai.egg-info/requires.txt
-social_science_ai.egg-info/top_level.txt
