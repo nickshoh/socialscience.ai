@@ -4,9 +4,9 @@ import os
 
 setuptools.setup(
     name='socialscience.ai'
-    , version='0.0.5'
+    , version='0.0.7'
     , author='Nick Oh'
-    , author_email="S.H.Oh1@lse.ac.uk"
+    , author_email="socialscience.ai@gmail.com"
     , description="AI/ML toolkits for social scientists"
     , long_description="AI/ML toolkits for social scientists"
     , long_description_content_type="text/markdown"
